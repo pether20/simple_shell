@@ -26,7 +26,7 @@
 Mandatory:
 | Files | Description |
 | --- | --- |
-| []() |  |
+| [0. README, man, AUTHORS]() |  |
 | []() |  |
 | []() |  |
 | []() |  |
