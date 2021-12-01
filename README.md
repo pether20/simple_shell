@@ -1,4 +1,3 @@
-**ESCRIBIR EN INGLES LO DE ABAJO**
 
 # Project 0x16. C - SIMPLE SHELL 📚
 
