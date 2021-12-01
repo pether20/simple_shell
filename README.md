@@ -39,7 +39,7 @@ Mandatory:
    <p align="center">
 Pether Tejada - 
 <a href="https://github.com/pether20">
-        <img src="https://img.shields.io/badge/">
+        <img src="https://img.shields.io/badge/Pether-mainPage-blue">
 </a>
 </p>
 
@@ -48,7 +48,7 @@ Pether Tejada -
 <p align="center">
 Edgar Condo -
 <a href="https://github.com/EdgaWill">
-        <img src="https://img.shields.io/badge/">
+        <img src="https://img.shields.io/badge/Edgar-mainPage-blue">
 </a>
 </p>
     
