@@ -35,3 +35,20 @@ Mandatory:
 | []() |  |
 | []() |  |
 | []() |  |
+
+   <p align="center">
+Pether Tejada - 
+<a href="https://github.com/pether20">
+        <img src="https://img.shields.io/badge/">
+</a>
+</p>
+
+
+
+<p align="center">
+Edgar Condo -
+<a href="https://github.com/EdgaWill">
+        <img src="https://img.shields.io/badge/">
+</a>
+</p>
+    
