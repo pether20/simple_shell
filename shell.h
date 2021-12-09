@@ -33,7 +33,7 @@ typedef struct var_s
 } var_t;
 
 /**
- * struct var_s - struct for commands and tokens.
+ * struct var_c - struct for commands and tokens.
  * @cmd: Especial command.
  * @p: pointer function.
  * typedef var_c: new name struct.
@@ -59,4 +59,4 @@ int countFlux(char comand[]);
 void finalComandTokens(char *finalTokens[], char comand[]);
 void executeBasicComand(char *tokens[], char comand[]);
 
-#endif 
+#endif
