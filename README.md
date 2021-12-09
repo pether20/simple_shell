@@ -37,7 +37,7 @@ Mandatory:
 | []() |  |
 
    <p align="center">
-Pether Tejada - 
+Pether Tejada -
 <a href="https://github.com/pether20">
         <img src="https://img.shields.io/badge/Pether-mainPage-blue">
 </a>
@@ -51,4 +51,3 @@ Edgar Condo -
         <img src="https://img.shields.io/badge/Edgar-mainPage-blue">
 </a>
 </p>
-    
