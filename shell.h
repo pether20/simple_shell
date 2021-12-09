@@ -9,8 +9,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-/*#define MAX_BUF 100*/
-
 /**
  * struct var_s - struct for commands and tokens.
  * @status: character to match after find  a percentage.
