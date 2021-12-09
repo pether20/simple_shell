@@ -24,6 +24,25 @@ Once a user inputs a command and hits enter, the shell performs the following ac
 2. Looks for the command.
 
 3. Executes the command.
+
+4. execve.
+
+5. exit.
+
+6. fork.
+
+7. free.
+
+8. _getline.
+
+9. malloc.
+
+10. strtok,
+
+11. wait.
+
+12. write.
+
 .PP
 .SH SEARCH FOR COMMAND
 When locating a command, the shell looks for a built-in command by that name.
