@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
@@ -44,10 +45,11 @@ typedef struct var_c
 } var_ec;
 
 void promptvi(void);
+int tokens(var_t *vars);
 int execute(var_t *vars, char **env);
 int searchRoadPATH(var_t *vars, char **env);
-char *RoadConcatCommand(var_t *vars, char *path_tokens);
-int isCommand(var_t *vars, char **env);
+char *RoadConcatCommand(var_t *vars, char *path_tokens, char **env);
+int isCommand(var_t *vars);
 int isEspecialCommand(var_t *vars, char **env);
 int exitFun(var_t *vars, char **env);
 int cdFun(var_t *vars, char **env);
