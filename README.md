@@ -10,7 +10,7 @@
 
 ### Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-    
+
 ### General
 
 * Who designed and implemented the original Unix operating system
@@ -27,10 +27,10 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * How to execute another program with the execve system call
 * How to suspend the execution of a process until one of its children terminates
 * What is EOF / “end-of-file”?
-    
-    
-    
-    
+
+
+
+
 ### 📋 Requirements
 ***
 * Allowed editors: vi, vim, emacs
@@ -42,7 +42,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * No more than 5 functions per file
 * All your header files should be include guarded
 * Use system calls only when you need to (why?)
-    
+
 ### GitHub
 There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
 
@@ -52,12 +52,12 @@ There should be one project repository per group. If you clone/fork/whatever a p
 |--|--|
 | **AUTHORS** | Contains the authors of the Simple Shell program. |
 | **README.md** | Contains an overview of Simple Shell. Important things that you should know before executes our Simple Shell program. |
-| **main.c** | simple shell program that 1) checks if in interactice/noninteractice mode 2) prints prompt and waits for user input 3) splits user input into an array 4) prints prompt again if in interactice mode.   
+| **main.c** | simple shell program that 1) checks if in interactice/noninteractice mode 2) prints prompt and waits for user input 3) splits user input into an array 4) prints prompt again if in interactice mode.
 | **man_1_simple_shell** | man page for our shell. |
 | **shell.h** | header file containing function prototypes, struct definitions, macros, standard libraries |
 | **shell.c** ||
     
-    
+
 Compilation
 Your shell will be compiled this way:
 ```
@@ -67,7 +67,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 Your shell should work like this in interactive mode:
 
-```    
+```
 $ ./hsh
 ($) /bin/ls
 hsh main.c shell.c
@@ -75,7 +75,7 @@ hsh main.c shell.c
 ($) exit
 $
 ```
-    
+
 ### List of comands you can use
 
 | Commands | Description |

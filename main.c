@@ -20,8 +20,10 @@ int main(int argc, char **argv, char **env)
 		exit(0);
 	if (isatty(STDIN_FILENO))
 		write(1, "$ ", 3);
+	signal(SIGINT, sighandler);
 	while (varget != EOF)
 	{
+		
 		varget = getline(&vars.comand, &size, stdin);
 		if (isatty(STDIN_FILENO))
 			write(1, "$ ", 3);
@@ -30,10 +32,11 @@ int main(int argc, char **argv, char **env)
 		if (varget == -1)
 			break;
 		vars.tk_i++;
-		tokens(&vars);
-		execute(&vars, env);
+		if (tokens(&vars, env) == 0)
+		{	execute(&vars, env);
 		if (isatty(STDIN_FILENO))
 		write(1, "$ ", 3);
+		}
 		free(vars.comand);
 		vars.comand = NULL;
 		size = 0;
@@ -43,9 +46,9 @@ int main(int argc, char **argv, char **env)
 	return (1);
 }
 
-int tokens(var_t *vars)
+int tokens(var_t *vars, char **env)
 {
-	char delimitador[] = ",.;\n\t ";
+	char delimitador[] = ",;\n\t ";
 	int i = 0;
 
 	vars->tokens[i] = strtok(vars->comand, delimitador);
@@ -56,7 +59,10 @@ int tokens(var_t *vars)
 	vars->contk = i;
 	}
 
-	isCommand(vars);
+	return (isCommand(vars, env));
+}
 
-	return (0);
+void sighandler(int signum) {
+   (void)signum;
+	write(1, "\n$ ", 3);
 }

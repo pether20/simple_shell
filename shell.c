@@ -10,7 +10,7 @@ int execute(var_t *vars, char **env)
 {
 pid_t child;
 int status, len = 0, wasSearchPath = 0;
-	
+
 while (len < vars->contk)
 {
 	if (access(vars->tokens[len], X_OK) == -1)
@@ -22,14 +22,14 @@ while (len < vars->contk)
 
 		if (child > 0)
 			wait(&status);
-		else if (child == 0)	
+		else if (child == 0)
 		{
 			execve(vars->tokens[len], vars->tokens, env);
 			free(vars->comand);
 			kill(getpid(), SIGTERM);
 		}
 		if (wasSearchPath)
-				free(vars->tokens[0]);
+		free(vars->tokens[0]);
 	}
 
 len++;
@@ -100,7 +100,7 @@ char *RoadConcatCommand(var_t *vars, char *path_tokens, char **env)
 	strcpy(newRoad, path_tokens);
 	strcat(newRoad, "/");
 	strcat(newRoad, vars->tokens[0]);
-	
+
 	if ((access(newRoad, X_OK)) == 0)
 	{
 		_returnRoad = malloc(sizeof(char) * (strlen(newRoad) + 1));
@@ -122,15 +122,14 @@ char *RoadConcatCommand(var_t *vars, char *path_tokens, char **env)
  * @path_tokens: road initial of path
  * Return: 1 success full or 127 fail
  */
-int isCommand(var_t *vars)
+int isCommand(var_t *vars, char **env)
 {
-	int i = 0;
+	int i = 0, tkn;
 	char newRoad[1024];
-	/*char *_returnRoad = NULL;*/
 	var_ec ec[] = {
 		{"exit", exitFun},
 		{"cd", cdFun},
-		
+		{"env", enviro},
 		{NULL, NULL}
 	};
 
@@ -139,25 +138,26 @@ int isCommand(var_t *vars)
 	strcpy(newRoad, "/bin/");
 	strcat(newRoad, vars->tokens[0]);
 
-	
 	while (ec[i].p != NULL)
 	{
 		if (strcmp(vars->tokens[0], ec[i].cmd) == 0)
 		{
-			return (ec[i].p(vars));
+			return (ec[i].p(vars, env));
+			break;
 		}
 	i++;
 	}
 
-	if(ec[i].p == NULL && access(newRoad, X_OK) == -1)
+	if (ec[i].p == NULL && access(newRoad, X_OK) == -1)
 	{
 	if (isatty(STDIN_FILENO))
-		{	
-		printf("%s: %d: %s: not found\n", vars->nameShell, vars->tk_i, vars->tokens[0]);
-		return(127);
+		{
+		tkn = vars->tk_i;
+		printf("%s: %d: %s: not found\n", vars->nameShell, tkn, vars->tokens[0]);
+		return (127);
 		}
 	}
 	i++;
-	return (0);
+return (0);
 }
 
