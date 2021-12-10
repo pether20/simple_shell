@@ -4,7 +4,7 @@ int exitFun(var_t *vars)
 {
 	int status;
 	char cnt[10];
-	(void)env;
+	/*(void)env;*/
 
 	status = atoi(vars->tokens[1]);
 	sprintf(cnt, "%d", status);
@@ -17,7 +17,7 @@ int exitFun(var_t *vars)
 int cdFun(var_t *vars)
 {
 	char *road = NULL;
-	(void)env;
+	/*(void)env;*/
 
 	road = malloc(sizeof(char)*1024);
 

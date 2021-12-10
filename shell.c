@@ -126,7 +126,7 @@ int isCommand(var_t *vars)
 {
 	int i = 0;
 	char newRoad[1024];
-	char *_returnRoad = NULL;
+	/*char *_returnRoad = NULL;*/
 	var_ec ec[] = {
 		{"exit", exitFun},
 		{"cd", cdFun},

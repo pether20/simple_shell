@@ -40,7 +40,7 @@ typedef struct var_s
 typedef struct var_c
 {
 	char *cmd;
-	int (*p)(var_t *, char **);
+	int (*p)(var_t *);
 
 } var_ec;
 
@@ -51,8 +51,8 @@ int searchRoadPATH(var_t *vars, char **env);
 char *RoadConcatCommand(var_t *vars, char *path_tokens, char **env);
 int isCommand(var_t *vars);
 int isEspecialCommand(var_t *vars, char **env);
-int exitFun(var_t *vars, char **env);
-int cdFun(var_t *vars, char **env);
+int exitFun(var_t *vars);
+int cdFun(var_t *vars);
 
 int countPipe(char comand[]);
 int countFlux(char comand[]);
