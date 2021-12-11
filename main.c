@@ -22,16 +22,20 @@ int main(int argc, char **argv, char **env)
 		write(1, "$ ", 3);
 	signal(SIGINT, sighandler);
 	while (varget != EOF)
-	{
-		
+	{	
 		varget = getline(&vars.comand, &size, stdin);
 		if (varget == 1)
+		{
+			if (isatty(STDIN_FILENO))
+			write(1, "$ ", 3);
 			continue;
+		}
 		if (varget == -1)
 			break;
 		vars.tk_i++;
 		if (tokens(&vars, env) == 0)
-		{	execute(&vars, env);
+		{	
+			execute(&vars, env);
 		}
 		if (isatty(STDIN_FILENO))
 			write(1, "$ ", 3);
