@@ -57,6 +57,9 @@ int cdFun(var_t *vars, char **env);
 int enviro(var_t *vars, char **env);
 int help(var_t *vars, char **env);
 char print_help(char *ptr);
+char *str_cat(char *s1, char *s2);
+char *str_dup(char *str);
+size_t len_str(char *str);
 
 int countPipe(char comand[]);
 int countFlux(char comand[]);

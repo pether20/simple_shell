@@ -40,11 +40,13 @@ int main(int argc, char **argv, char **env)
 		if (isatty(STDIN_FILENO))
 			write(1, "$ ", 3);
 		free(vars.comand);
+		free(vars.tokens);
 		vars.comand = NULL;
 		size = 0;
 	}
+	
 	free(vars.comand);
-	free(vars.tokens);
+	
 	return (0);
 }
 
