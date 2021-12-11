@@ -8,7 +8,7 @@
  */
 int execute(var_t *vars, char **env)
 {
-pid_t child;
+pid_t child = 0;
 int status = 0, len = 0, wasSearchPath = 0;
 
 while (len < vars->contk)
