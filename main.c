@@ -25,8 +25,6 @@ int main(int argc, char **argv, char **env)
 	{
 		
 		varget = getline(&vars.comand, &size, stdin);
-		if (isatty(STDIN_FILENO))
-			write(1, "$ ", 3);
 		if (varget == 1)
 			continue;
 		if (varget == -1)
@@ -34,9 +32,9 @@ int main(int argc, char **argv, char **env)
 		vars.tk_i++;
 		if (tokens(&vars, env) == 0)
 		{	execute(&vars, env);
-		if (isatty(STDIN_FILENO))
-		write(1, "$ ", 3);
 		}
+		if (isatty(STDIN_FILENO))
+			write(1, "$ ", 3);
 		free(vars.comand);
 		vars.comand = NULL;
 		size = 0;

@@ -2,14 +2,16 @@
 
 int exitFun(var_t *vars, char **env)
 {
-	int status;
+	int status = 0;
 
 	(void)env;
 
-	status = atoi(vars->tokens[1]);
+	/*status = atoi(vars->tokens[1]);*/ 
 	if (vars->tokens[1] != NULL)
-	{	printf("%d: exit: Illegal number: %s\n", vars->tk_i, vars->tokens[1]);
-		return (1);
+	{	
+		status = atoi(vars->tokens[1]);
+		/*printf("%d: exit: Illegal number: %s\n", vars->tk_i, vars->tokens[1]);
+		return (1);*/
 	}
 	free(vars->comand);
 	free(vars->tokens);
