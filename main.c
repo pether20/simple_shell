@@ -11,7 +11,7 @@ int main(int argc, char **argv, char **env)
 {
 	var_t vars = {0, 0, 0, NULL, NULL, NULL};
 	size_t size = 0;
-	int varget;
+	int varget = 0;
 
 	(void)argc;
 	vars.nameShell = argv[0];
