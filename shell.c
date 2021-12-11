@@ -125,7 +125,7 @@ char *RoadConcatCommand(var_t *vars, char *path_tokens, char **env)
  */
 int isCommand(var_t *vars, char **env)
 {
-	int i = 0, tkn;
+	int i = 0, tkn = 0;
 	char newRoad[1024];
 	var_ec ec[] = {
 		{"exit", exitFun},
