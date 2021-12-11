@@ -87,6 +87,7 @@ int searchRoadPATH(var_t *vars, char **env)
  * RoadConcatCommand - Function return road concatenated comand
  * @vars: struct of variables
  * @path_tokens: road initial of path
+ * @env: enviroment
  * Return: Road concatenated for execution
  */
 char *RoadConcatCommand(var_t *vars, char *path_tokens, char **env)
@@ -119,7 +120,7 @@ char *RoadConcatCommand(var_t *vars, char *path_tokens, char **env)
 /**
  * isCommand - Function verified comand
  * @vars: struct of variables
- * @path_tokens: road initial of path
+ * @env: enviroment
  * Return: 1 success full or 127 fail
  */
 int isCommand(var_t *vars, char **env)
@@ -130,6 +131,7 @@ int isCommand(var_t *vars, char **env)
 		{"exit", exitFun},
 		{"cd", cdFun},
 		{"env", enviro},
+		{"help", help},
 		{NULL, NULL}
 	};
 
@@ -143,7 +145,6 @@ int isCommand(var_t *vars, char **env)
 		if (strcmp(vars->tokens[0], ec[i].cmd) == 0)
 		{
 			return (ec[i].p(vars, env));
-			break;
 		}
 	i++;
 	}

@@ -22,7 +22,7 @@ int main(int argc, char **argv, char **env)
 		write(1, "$ ", 3);
 	signal(SIGINT, sighandler);
 	while (varget != EOF)
-	{	
+	{
 		varget = getline(&vars.comand, &size, stdin);
 		if (varget == 1)
 		{
@@ -34,7 +34,7 @@ int main(int argc, char **argv, char **env)
 			break;
 		vars.tk_i++;
 		if (tokens(&vars, env) == 0)
-		{	
+		{
 			execute(&vars, env);
 		}
 		if (isatty(STDIN_FILENO))
@@ -48,6 +48,14 @@ int main(int argc, char **argv, char **env)
 	return (1);
 }
 
+/**
+ * tokens - Initation funtion
+ *
+ * @vars: point
+ * @env: point
+ *
+ * Return: success full
+ */
 int tokens(var_t *vars, char **env)
 {
 	char delimitador[] = ",;\n\t ";
@@ -64,7 +72,14 @@ int tokens(var_t *vars, char **env)
 	return (isCommand(vars, env));
 }
 
-void sighandler(int signum) {
-   (void)signum;
+/**
+ * sighandler - Initation funtion varible
+ *
+ * @signum: int argument
+ *
+ */
+void sighandler(int signum)
+{
+	(void)signum;
 	write(1, "\n$ ", 3);
 }

@@ -55,6 +55,8 @@ int isEspecialCommand(var_t *vars, char **env);
 int exitFun(var_t *vars, char **env);
 int cdFun(var_t *vars, char **env);
 int enviro(var_t *vars, char **env);
+int help(var_t *vars, char **env);
+char print_help(char *ptr);
 
 int countPipe(char comand[]);
 int countFlux(char comand[]);
