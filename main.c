@@ -45,7 +45,7 @@ int main(int argc, char **argv, char **env)
 	}
 	free(vars.comand);
 	free(vars.tokens);
-	return (1);
+	return (0);
 }
 
 /**
