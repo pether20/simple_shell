@@ -9,30 +9,25 @@
 int execute(var_t *vars, char **env)
 {
 	pid_t child = 0;
-	int status = 0, len = 0; /*wasSearchPath = 0;*/
+	int status = 0; /*wasSearchPath = 0;*/
 
-	while (len < vars->contk)
+	if (access(vars->tokens[0], X_OK) == -1)
+		searchRoadPATH(vars, env);
+	if (access(vars->tokens[0], X_OK) == 0)
 	{
-		if (access(vars->tokens[len], X_OK) == -1)
-			searchRoadPATH(vars, env);
-		if (access(vars->tokens[len], X_OK) == 0)
-		{
-			child = fork();
+		child = fork();
 
-			if (child > 0)
-				wait(&status);
-			else if (child == 0)
-			{
-				execve(vars->tokens[len], vars->tokens, env);
-				free(vars->comand);
-				free(vars->tokens);
-				kill(getpid(), SIGTERM);
-			}
+		if (child > 0)
+			wait(&status);
+		else if (child == 0)
+		{ execve(vars->tokens[0], vars->tokens, env);
+			free(vars->comand);
+			free(vars->tokens);
+			kill(getpid(), SIGTERM);
+			exit(98);
 		}
-
-		len++;
+		return (1);
 	}
-
 	vars->contk = 0;
 	return (0);
 }
@@ -53,27 +48,27 @@ int searchRoadPATH(var_t *vars, char **env)
 	for (i = 0; env[i]; i++)
 	{
 
-	if (strncmp(env[i], "PATH=", 5) == 0)
-	{
-		strcpy(ruta, env[i]);
-		path_tokens = strtok(ruta, "=");
-
-		while (path_tokens != NULL)
+		if (strncmp(env[i], "PATH=", 5) == 0)
 		{
-			path_tokens = strtok(NULL, ":");
-			if (!path_tokens)
+			strcpy(ruta, env[i]);
+			path_tokens = strtok(ruta, "=");
+
+			while (path_tokens != NULL)
 			{
-				tk = vars->tk_i;
-				printf("%s: %d: %s: not found\n", vars->nameShell, tk, vars->tokens[0]);
-				return (0);
+				path_tokens = strtok(NULL, ":");
+				if (!path_tokens)
+				{
+					tk = vars->tk_i;
+					printf("%s: %d: %s: not found\n", vars->nameShell, tk, vars->tokens[0]);
+					return (0);
+				}
+				val = RoadConcatCommand(vars, path_tokens, env);
+				if (val == 1)
+					return (1);
+				i++;
 			}
-			val = RoadConcatCommand(vars, path_tokens, env);
-			if (val == 1)
-				return (1);
-		i++;
+			return (0);
 		}
-	return (0);
-	}
 
 	}
 	return (0);
@@ -91,6 +86,8 @@ int RoadConcatCommand(var_t *vars, char *path_tokens, char **env)
 	char *newRoad = NULL;
 	char *ron = NULL;
 	char *vodka = NULL;
+	char buffer[1024];
+	int i = 0;
 
 	(void)env;
 	/*newRoad[0] = '\0';*/
@@ -103,12 +100,16 @@ int RoadConcatCommand(var_t *vars, char *path_tokens, char **env)
 
 	if ((access(vodka, X_OK)) == 0)
 	{
-		vars->tokens[0] = vodka;
-		
+		while (vodka[i] != '\0')
+		{
+			buffer[i] = vodka[i];
+			i++;
+		}
+		buffer[i] = '\0';
+		vars->tokens[0] = &buffer[0];
 		free(vodka);
 		return (1);
 	}
-	
 	free(vodka);
 	return (0);
 }
@@ -136,7 +137,7 @@ int isCommand(var_t *vars, char **env)
 		{
 			return (ec[i].p(vars, env));
 		}
-	i++;
+		i++;
 	}
 	return (0);
 }

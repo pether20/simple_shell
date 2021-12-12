@@ -56,7 +56,7 @@ There should be one project repository per group. If you clone/fork/whatever a p
 | **man_1_simple_shell** | man page for our shell. |
 | **shell.h** | header file containing function prototypes, struct definitions, macros, standard libraries |
 | **shell.c** ||
-    
+
 
 Compilation
 Your shell will be compiled this way:
