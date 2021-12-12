@@ -15,9 +15,7 @@ int main(int argc, char **argv, char **env)
 
 	(void)argc;
 	vars.nameShell = argv[0];
-	vars.tokens = malloc(sizeof(char *) * 1024);
-	if (vars.tokens == NULL)
-		exit(0);
+
 	if (isatty(STDIN_FILENO))
 		write(1, "$ ", 3);
 	signal(SIGINT, sighandler);
@@ -27,7 +25,7 @@ int main(int argc, char **argv, char **env)
 		if (varget == 1)
 		{
 			if (isatty(STDIN_FILENO))
-			write(1, "$ ", 3);
+				write(1, "$ ", 3);
 			continue;
 		}
 		if (varget == -1)
@@ -44,9 +42,8 @@ int main(int argc, char **argv, char **env)
 		vars.comand = NULL;
 		size = 0;
 	}
-	
+
 	free(vars.comand);
-	
 	return (0);
 }
 
@@ -63,6 +60,9 @@ int tokens(var_t *vars, char **env)
 	char delimitador[] = ",;\n\t ";
 	int i = 0;
 
+	vars->tokens = malloc(sizeof(char *) * 1024);
+	if (vars->tokens == NULL)
+		exit(0);
 	vars->tokens[i] = strtok(vars->comand, delimitador);
 	while (vars->tokens[i]  != NULL)
 	{

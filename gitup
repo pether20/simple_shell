@@ -1,0 +1,32 @@
+#!/bin/bash
+#################################
+######## CREATED BY HARU ########
+#################################
+# font colors -------------------
+font_blue="\033[34m"
+font_green="\033[32m"
+
+# background colors -------------
+back_white="\033[47m"
+
+# none --------------------------
+f_none="\033[0m"
+#################################
+
+# Adding files
+echo -e "$font_blue$back_white Write the name of the files you want to upload to GITHUB:$f_none"
+read -p ""
+files="$REPLY"
+git add $files
+
+# Making a commit
+echo -e "$font_green$back_white Write a commit to GITHUB:$f_none"
+read -p ""
+commit="$REPLY"
+git commit -m "$commit"
+
+# Selecting the branch
+echo -e "$font_blue$back_white Write the BRANCH where you want to upload:$f_none"
+read -p ""
+branch="$REPLY"
+git push origin $branch

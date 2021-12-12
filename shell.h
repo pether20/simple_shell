@@ -49,7 +49,7 @@ void sighandler(int);
 int tokens(var_t *vars, char **env);
 int execute(var_t *vars, char **env);
 int searchRoadPATH(var_t *vars, char **env);
-char *RoadConcatCommand(var_t *vars, char *path_tokens, char **env);
+int RoadConcatCommand(var_t *vars, char *path_tokens, char **env);
 int isCommand(var_t *vars, char **env);
 int isEspecialCommand(var_t *vars, char **env);
 int exitFun(var_t *vars, char **env);
