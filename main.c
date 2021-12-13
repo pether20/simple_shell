@@ -71,6 +71,8 @@ int tokens(var_t *vars, char **env)
 	vars->contk = i;
 	}
 
+	if (vars->tokens[0] == NULL)
+		return (1);
 	return (isCommand(vars, env));
 }
 
