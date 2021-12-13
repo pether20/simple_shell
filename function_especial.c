@@ -34,6 +34,8 @@ int exitFun(var_t *vars, char **env)
 int cdFun(var_t *vars, char **env)
 {
 	char *road = NULL;
+	char *ron = NULL;
+	char *vodka = NULL;
 	(void)env;
 
 	road = malloc(sizeof(char) * 1024);
@@ -41,10 +43,12 @@ int cdFun(var_t *vars, char **env)
 		exit(0);
 
 	getcwd(road, 1024);
-	strcat(road, "/");
-	strcat(road, vars->tokens[1]);
-	chdir(road);
+	ron = str_cat(road, "/");
+	vodka = str_cat(ron, vars->tokens[1]);
+	chdir(vodka);
 	free(road);
+	free(ron);
+	free(vodka);
 
 	return (1);
 }

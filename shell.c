@@ -40,17 +40,17 @@ int execute(var_t *vars, char **env)
  */
 int searchRoadPATH(var_t *vars, char **env)
 {
-	char ruta[1024];
-	char *path_tokens;
+	char *ruta = NULL;
+	char *path_tokens = NULL;
 	int i = 0, tk = 0, val = 0;
 
-	ruta[0] = '\0';
+	/*ruta[0] = '\0';*/
 	for (i = 0; env[i]; i++)
 	{
 
 		if (strncmp(env[i], "PATH=", 5) == 0)
 		{
-			strcpy(ruta, env[i]);
+			ruta = str_dup(env[i]);
 			path_tokens = strtok(ruta, "=");
 
 			while (path_tokens != NULL)
@@ -60,11 +60,15 @@ int searchRoadPATH(var_t *vars, char **env)
 				{
 					tk = vars->tk_i;
 					printf("%s: %d: %s: not found\n", vars->nameShell, tk, vars->tokens[0]);
+					free(ruta);
 					return (0);
 				}
 				val = RoadConcatCommand(vars, path_tokens, env);
 				if (val == 1)
+				{
+					free(ruta);
 					return (1);
+				}
 				i++;
 			}
 			return (0);
